@@ -3,7 +3,7 @@ import csv
 import openpyxl
 from utils import cleanhtml, desc_identificate
 
-# регулярное выражение для очистки строк от html разметки
+# регулярное выражение для очистки строк от имеющейся html разметки
 CLEANR = re.compile('<.*?>|&([a-z0-9]+|#[0-9]{1,6}|#x[0-9a-f]{1,6});|_x\\S{1,5}_')
 
 # путь к файлу с данными

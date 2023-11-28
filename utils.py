@@ -3,7 +3,7 @@ import re
 
 def cleanhtml(re_clean: str, html_string: str) -> str:
     """
-    Функция для очищения строки от html разметки
+    Функция для очищения строки от всей html разметки
     :param re_clean: Регулярное выражение для очищения
     :param html_string: строка с html разметкой
     :return: очищенная строка
