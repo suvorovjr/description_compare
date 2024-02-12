@@ -42,9 +42,9 @@ def description_compare(filename):
 
     for i, row in enumerate(data):
         # Проверка строки на валидность
-        if i == 0 or len(row) != 5:
+        if i == 0 or len(row) != 6:
             continue
-        product_id, product_name, description, product_brand, product_collection = row
+        product_id, product_name, description, product_brand, product_collection, product_subcategory = row
         # Проверка есть ли id в списке отработанных id
         if product_id in working_id:
             continue
@@ -53,20 +53,20 @@ def description_compare(filename):
         identifications_desc.append(clean_description)
         identification_list = []
         for n, compare_row in enumerate(data):
-            if n == 0 or i == n or len(compare_row) != 5:
+            if n == 0 or i == n or len(compare_row) != 6:
                 continue
-            compare_id, compare_name, compare_description, compare_brand, compare_collection = compare_row
+            compare_id, compare_name, compare_description, compare_brand, compare_collection, compare_subcategory = compare_row
             clean_compare_description = cleanhtml(cleanr, compare_description)
             ident_percent_list = []
             if len(product_collection) > 1:
-                if product_collection == compare_collection and product_brand == compare_brand:
+                if product_collection == compare_collection and product_brand == compare_brand and product_subcategory == compare_subcategory:
                     for ident_description in identifications_desc:
                         ident_percent = desc_identificate(ident_description, clean_compare_description)
                         ident_percent_list.append(ident_percent)
                 else:
                     continue
             else:
-                if product_brand == compare_brand:
+                if product_brand == compare_brand and product_subcategory == compare_subcategory:
                     for ident_description in identifications_desc:
                         ident_percent = desc_identificate(ident_description, clean_compare_description)
                         ident_percent_list.append(ident_percent)
